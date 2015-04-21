@@ -443,7 +443,9 @@ public class DrawableCircuit implements Drawable {
 		if (showLineNames && smoothScaleY > 10) {
 			Color lineNameColor = new Color(Color.WHITE);
 			lineNameColor.a = Math.max(0, Math.min(1, (smoothScaleY - 10f) / 5f));
-			RevVisGDX.singleton.mc.addHUDMessage(data.getVars().get(indexOfVariable).hashCode(), data.getVars().get(indexOfVariable), RevVisGDX.singleton.camera.viewportWidth - 64, (line.y + RevVisGDX.singleton.camera.viewportHeight / 2f), lineNameColor);
+			float xCoord = Math.max(8, this.xCoordOnScreen(-1) + (RevVisGDX.singleton.camera.viewportWidth / 2f));
+			System.out.println(xCoord);
+			RevVisGDX.singleton.mc.addHUDMessage(data.getVars().get(indexOfVariable).hashCode(), data.getVars().get(indexOfVariable), xCoord, (line.y + RevVisGDX.singleton.camera.viewportHeight / 2f), lineNameColor);
 		} else {
 			RevVisGDX.singleton.mc.removeHUDMessage(data.getVars().get(indexOfVariable).hashCode());
 		}
