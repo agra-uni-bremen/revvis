@@ -1,8 +1,8 @@
 # RevVis - A Tool for the Visualization of Structures and Properties in Reversible Circuits #
 
 Copyright (c) 2014 Robert Wille, Jannis Stoppe, Eleonora Schönborn, 
-Kamalika Datta, and Rolf Drechsler
-University of Bremen, Germany
+Kamalika Datta, and Rolf Drechsler  
+University of Bremen, Germany  
 http://www.informatik.uni-bremen.de/agra/eng/revvis.php
 
 The software is intellectual property of the University of Bremen, Germany. You 
