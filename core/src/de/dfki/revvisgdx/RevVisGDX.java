@@ -252,9 +252,11 @@ public class RevVisGDX implements ApplicationListener {
 			if (filename != null && filename != "") {
 				c = RevlibFileReader.readRealFile(filename);
 				RevVisGDX.singleton.drawables.remove(RevVisGDX.singleton.currentCircuit);
+				RevVisGDX.singleton.mc.clear();
 				RevVisGDX.singleton.currentCircuit = new DrawableCircuitReordered(c);
 				RevVisGDX.singleton.drawables.add(RevVisGDX.singleton.currentCircuit);
 				RevVisGDX.singleton.currentCircuit.zoomExtents();
+				RevVisGDX.singleton.mc.addMessage("Loaded " + filename);
 			} else {
 				System.out.println("Error: could not load " + filename);
 			}

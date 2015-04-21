@@ -147,4 +147,9 @@ public class MessageCenter {
 			this.HUDMessages.remove(key);
 		}
 	}
+	
+	public void clear() {
+		this.HUDMessages.clear();
+		this.messages.clear();
+	}
 }
