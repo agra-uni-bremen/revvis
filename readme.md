@@ -1,5 +1,4 @@
-## RevVis - A Tool for the Visualization 
-## of Structures and Properties in Reversible Circuits
+# RevVis - A Tool for the Visualization of Structures and Properties in Reversible Circuits #
 
 Copyright (c) 2014 Robert Wille, Jannis Stoppe, Eleonora Schönborn, 
 Kamalika Datta, and Rolf Drechsler
@@ -65,11 +64,12 @@ also be selected using the keys 0 - 9.
 If you use RevVis for your research, we would be thankful if you refer to the
 tool by citing the following publication: 
 
-@inproceedings{revvis,
-    author = {Robert Wille and Jannis Stoppe and Eleonora Sch{\"o}nborn and Kamalika Datta and Rolf Drechsler},
-    title = {RevVis: Visualization of Structures and Properties in Reversible Circuits},
-    booktitle = {Reversible Computation},
-    publisher = {Springer},
-    year = {2014},
-    note = {{RevVis} is available at http://www.informatik.uni-bremen.de/agra/eng/revvis.php}
-}
+
+	@inproceedings{revvis,
+		author = {Robert Wille and Jannis Stoppe and Eleonora Sch{\"o}nborn and Kamalika Datta and Rolf Drechsler},
+		title = {RevVis: Visualization of Structures and Properties in Reversible Circuits},
+		booktitle = {Reversible Computation},
+		publisher = {Springer},
+		year = {2014},
+		note = {{RevVis} is available at http://www.informatik.uni-bremen.de/agra/eng/revvis.php}
+	}
