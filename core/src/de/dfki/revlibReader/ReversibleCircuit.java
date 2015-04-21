@@ -55,19 +55,19 @@ public class ReversibleCircuit {
 		this.gates.add(g);
 
 		for (int i = 0; i < g.getInputs().size(); i++) {
-			if (!(vars.contains(g.getInputs().get(i)))) {
-				vars.add(g.getInputs().get(i));
+			if (!(vars.contains(g.getInputs().get(i).replace("-", "")))) {
+				vars.add(g.getInputs().get(i).replace("-", ""));
 			}
-			if (!(firstGates.containsKey(g.getInputs().get(i)))) {
-				firstGates.put(g.getInputs().get(i), g);
-			} if (!mixedInputOutput.contains(g.getInputs().get(i))) {
-				inputOnly.add(g.getInputs().get(i));
-			} if (outputOnly.contains(g.getInputs().get(i))) {
-				mixedInputOutput.add(g.getInputs().get(i));
-				outputOnly.remove(g.getInputs().get(i));
-				inputOnly.remove(g.getInputs().get(i));
+			if (!(firstGates.containsKey(g.getInputs().get(i).replace("-", "")))) {
+				firstGates.put(g.getInputs().get(i).replace("-", ""), g);
+			} if (!mixedInputOutput.contains(g.getInputs().get(i).replace("-", ""))) {
+				inputOnly.add(g.getInputs().get(i).replace("-", ""));
+			} if (outputOnly.contains(g.getInputs().get(i).replace("-", ""))) {
+				mixedInputOutput.add(g.getInputs().get(i).replace("-", ""));
+				outputOnly.remove(g.getInputs().get(i).replace("-", ""));
+				inputOnly.remove(g.getInputs().get(i).replace("-", ""));
 			}
-			lastGates.put(g.getInputs().get(i), g);
+			lastGates.put(g.getInputs().get(i).replace("-", ""), g);
 		}
 		if (!(vars.contains(g.output))) {
 			vars.add(g.output);

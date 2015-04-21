@@ -22,6 +22,7 @@ public class DrawableCircuit implements Drawable {
 	DrawableSprite line;
 	DrawableSprite gate01;
 	DrawableSprite gate02;
+	DrawableSprite gate02neg;
 
 	private float scaleX = 1;
 	public float offsetX = 0;
@@ -79,6 +80,7 @@ public class DrawableCircuit implements Drawable {
 		line = new DrawableSprite("data/BlackPixel.png");
 		gate01 = new DrawableSprite("data/tgate01.png");
 		gate02 = new DrawableSprite("data/tgate02.png");
+		gate02neg = new DrawableSprite("data/tgate02_negative.png");
 	}
 
 	@Override
@@ -232,8 +234,8 @@ public class DrawableCircuit implements Drawable {
 							maxY = minY;
 
 							for (int j = 0; j < data.getGate(i).getInputs().size(); j++) {
-								minY = Math.min(minY, getLineYScreenCoord(data.getGate(i).getInputs().get(j)));
-								maxY = Math.max(maxY, getLineYScreenCoord(data.getGate(i).getInputs().get(j)));
+								minY = Math.min(minY, getLineYScreenCoord(data.getGate(i).getInputs().get(j).replace("-", "")));
+								maxY = Math.max(maxY, getLineYScreenCoord(data.getGate(i).getInputs().get(j).replace("-", "")));
 							}
 															
 							line.color = gateColor;
@@ -277,16 +279,13 @@ public class DrawableCircuit implements Drawable {
 						DrawableSprite targetGate;
 						DrawableSprite controlGate;
 
-						if (!(this.gateDisplay == gateElementDisplay.alwaysBoxy) && (maxDim >= reduceGatesToBlocksWhenSmallerThanPixels || this.gateDisplay == gateElementDisplay.alwaysDetailed)) {
+						boolean useDetailedSprites = !(this.gateDisplay == gateElementDisplay.alwaysBoxy) && (maxDim >= reduceGatesToBlocksWhenSmallerThanPixels || this.gateDisplay == gateElementDisplay.alwaysDetailed);
+						if (useDetailedSprites) {
 							targetGate = gate01;
-							controlGate = gate02;
 							targetGate.setDimensions(maxDim, maxDim);
-							controlGate.setDimensions(maxDim, maxDim);
 						} else {
 							targetGate = line;
-							controlGate = line;
 							targetGate.setDimensions(smoothScaleX, smoothScaleY);
-							controlGate.setDimensions(smoothScaleX, smoothScaleY);
 						}
 						targetGate.color = gateColor;
 						targetGate.y = getLineYScreenCoord(data.getGate(i).output);
@@ -294,12 +293,33 @@ public class DrawableCircuit implements Drawable {
 						
 						targetGate.draw();
 
-						controlGate.color = gateColor;
+						
 						for (int j = 0; j < data.getGate(i).getInputs().size(); j++) {
-							controlGate.y = getLineYScreenCoord(data.getGate(i).getInputs().get(j));
+							boolean negOverlay = false;
+							if (useDetailedSprites) {
+								if (data.getGate(i).getInputs().get(j).startsWith("-")) {
+									negOverlay = true;
+								}
+								controlGate = gate02;
+								controlGate.color = gateColor;
+								gate02neg.color = Color.WHITE.cpy();
+								controlGate.setDimensions(maxDim, maxDim);
+								gate02neg.setDimensions(maxDim, maxDim);
+							} else {
+								controlGate = line;
+								controlGate.setDimensions(smoothScaleX, smoothScaleY);
+							}
+							
+							controlGate.y = getLineYScreenCoord(data.getGate(i).getInputs().get(j).replace("-", ""));
 							controlGate.x = xCoord;
 							
 							controlGate.draw();
+							
+							if (negOverlay) {
+								gate02neg.y = controlGate.y;
+								gate02neg.x = controlGate.x;
+								gate02neg.draw();
+							}
 						}
 					}
 				/**
@@ -314,8 +334,8 @@ public class DrawableCircuit implements Drawable {
 					
 					//First: Add current gate to group.
 					for (int j = 0; j < data.getGate(i).getInputs().size(); j++) {
-						minY = Math.min(minY, getLineYScreenCoord(data.getGate(i).getInputs().get(j)));
-						maxY = Math.max(maxY, getLineYScreenCoord(data.getGate(i).getInputs().get(j)));
+						minY = Math.min(minY, getLineYScreenCoord(data.getGate(i).getInputs().get(j).replace("-", "")));
+						maxY = Math.max(maxY, getLineYScreenCoord(data.getGate(i).getInputs().get(j).replace("-", "")));
 					}
 					minY = Math.min(minY, getLineYScreenCoord(data.getGate(i).output));
 					maxY = Math.max(maxY, getLineYScreenCoord(data.getGate(i).output));
