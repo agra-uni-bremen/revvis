@@ -6,5 +6,5 @@
 	<inherits name='RevVisGDX' />
 	<entry-point class='de.dfki.revvisgdx.client.HtmlLauncher' />
 	
-	<set-configuration-property name="gdx.assetpath" value="../android/assets" />
+	<set-configuration-property name="gdx.assetpath" value="../core/assets" />
 </module>
