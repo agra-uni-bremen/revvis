@@ -1,5 +1,7 @@
 # RevVis #
+
 *A Tool for the Visualization of Structures and Properties in Reversible Circuits*
+
 ---------------------------------------
 
 Copyright (c) 2014 Robert Wille, Jannis Stoppe, Eleonora Schönborn, 
