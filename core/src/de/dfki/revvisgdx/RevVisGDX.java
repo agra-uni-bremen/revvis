@@ -160,9 +160,10 @@ public class RevVisGDX implements ApplicationListener {
 										.getAmountOfVars())
 								+ "+0+0 screenshots/fullPreset.png";
 						System.out.println(execString);
-						Runtime.getRuntime().exec(execString);
+						System.out.println("Screenshot export feature currently disabled");
+						//Runtime.getRuntime().exec(execString);
 					} catch (Exception e) {
-						System.out.println(System.getenv("PATH"));
+						//System.out.println(System.getenv("PATH"));
 						System.out.println(e.getMessage());
 					}
 				} else {
@@ -240,9 +241,10 @@ public class RevVisGDX implements ApplicationListener {
 	 * @param h
 	 */
 	private void saveScreenshot(FileHandle file, int x, int y, int w, int h) {
-		Pixmap pixmap = getScreenshot(x, y, w, h, true);
-		PixmapIO.writePNG(file, pixmap);
-		pixmap.dispose();
+//		Pixmap pixmap = getScreenshot(x, y, w, h, true);
+//		PixmapIO.writePNG(file, pixmap);
+//		pixmap.dispose();
+		System.out.println("Screenshot saving currently disabled.");
 	}
 
 	/**
@@ -255,66 +257,67 @@ public class RevVisGDX implements ApplicationListener {
 	 * @param flipY
 	 * @return
 	 */
-	private Pixmap getScreenshot(int x, int y, int w, int h, boolean flipY) {
-		Gdx.gl.glPixelStorei(GL20.GL_PACK_ALIGNMENT, 1);
-
-		final Pixmap pixmap = new Pixmap(w, h, Format.RGBA8888);
-		ByteBuffer pixels = pixmap.getPixels();
-		Gdx.gl.glReadPixels(x, y, w, h, GL20.GL_RGBA, GL20.GL_UNSIGNED_BYTE,
-				pixels);
-
-		final int numBytes = w * h * 4;
-		byte[] lines = new byte[numBytes];
-		if (flipY) {
-			final int numBytesPerLine = w * 4;
-			for (int i = 0; i < h; i++) {
-				pixels.position((h - i - 1) * numBytesPerLine);
-				pixels.get(lines, i * numBytesPerLine, numBytesPerLine);
-			}
-			pixels.clear();
-			pixels.put(lines);
-		} else {
-			pixels.clear();
-			pixels.get(lines);
-		}
-
-		return pixmap;
-	}
+//	private Pixmap getScreenshot(int x, int y, int w, int h, boolean flipY) {
+//		Gdx.gl.glPixelStorei(GL20.GL_PACK_ALIGNMENT, 1);
+//
+//		final Pixmap pixmap = new Pixmap(w, h, Format.RGBA8888);
+//		ByteBuffer pixels = pixmap.getPixels();
+//		Gdx.gl.glReadPixels(x, y, w, h, GL20.GL_RGBA, GL20.GL_UNSIGNED_BYTE,
+//				pixels);
+//
+//		final int numBytes = w * h * 4;
+//		byte[] lines = new byte[numBytes];
+//		if (flipY) {
+//			final int numBytesPerLine = w * 4;
+//			for (int i = 0; i < h; i++) {
+//				pixels.position((h - i - 1) * numBytesPerLine);
+//				pixels.get(lines, i * numBytesPerLine, numBytesPerLine);
+//			}
+//			pixels.clear();
+//			pixels.put(lines);
+//		} else {
+//			pixels.clear();
+//			pixels.get(lines);
+//		}
+//
+//		return pixmap;
+//	}
 
 	public static void loadNewFile() {
-		if (path == null) {
-			path = new File(System.getProperty("user.dir"));
-		}
-
-		final JFileChooser fc = new JFileChooser(path);
-		fc.showOpenDialog(null);
-		File sFile = fc.getSelectedFile();
-
-		if (sFile != null) {
-			
-			path = sFile;
-			
-			String filename = sFile.toString();
-
-			try {
-				ReversibleCircuit c;
-				if (filename != null && filename != "") {
-					c = RevlibFileReader.readRealFile(filename);
-					RevVisGDX.singleton.drawables
-							.remove(RevVisGDX.singleton.currentCircuit);
-					RevVisGDX.singleton.mc.clear();
-					RevVisGDX.singleton.currentCircuit = new DrawableCircuitReordered(
-							c);
-					RevVisGDX.singleton.drawables
-							.add(RevVisGDX.singleton.currentCircuit);
-					RevVisGDX.singleton.currentCircuit.zoomExtents();
-					RevVisGDX.singleton.mc.addMessage("Loaded " + filename);
-				} else {
-					System.out.println("Error: could not load " + filename);
-				}
-			} catch (Exception e) {
-				System.out.println("Error: could not load " + filename);
-			}
-		}
+//		if (path == null) {
+//			path = new File(System.getProperty("user.dir"));
+//		}
+//
+//		final JFileChooser fc = new JFileChooser(path);
+//		fc.showOpenDialog(null);
+//		File sFile = fc.getSelectedFile();
+//
+//		if (sFile != null) {
+//			
+//			path = sFile;
+//			
+//			String filename = sFile.toString();
+//
+//			try {
+//				ReversibleCircuit c;
+//				if (filename != null && filename != "") {
+//					c = RevlibFileReader.readRealFile(filename);
+//					RevVisGDX.singleton.drawables
+//							.remove(RevVisGDX.singleton.currentCircuit);
+//					RevVisGDX.singleton.mc.clear();
+//					RevVisGDX.singleton.currentCircuit = new DrawableCircuitReordered(
+//							c);
+//					RevVisGDX.singleton.drawables
+//							.add(RevVisGDX.singleton.currentCircuit);
+//					RevVisGDX.singleton.currentCircuit.zoomExtents();
+//					RevVisGDX.singleton.mc.addMessage("Loaded " + filename);
+//				} else {
+//					System.out.println("Error: could not load " + filename);
+//				}
+//			} catch (Exception e) {
+//				System.out.println("Error: could not load " + filename);
+//			}
+//		}
+		System.out.println("File loading currently disabled.");
 	}
 }

@@ -18,25 +18,25 @@ public class Menu implements Drawable {
 	private int lines = 1;
 	
 	public Menu() {
-		try {
-			buttons.add(new FunctionButton("data/Preset0.png", Presets.class.getMethod("setDefault")));
-			buttons.add(new FunctionButton("data/Preset1.png", Presets.class.getMethod("setConstGarbage")));
-			buttons.add(new FunctionButton("data/Preset2.png", Presets.class.getMethod("setBoxesAndUsage")));
-			buttons.add(new FunctionButton("data/Preset3.png", Presets.class.getMethod("setColourizedUsage")));
-			buttons.add(new FunctionButton("data/Preset4.png", Presets.class.getMethod("setGreyNeighboursWithBlackTargets")));
-			buttons.add(new FunctionButton("data/Preset5.png", Presets.class.getMethod("setColourizeLineType")));
-			buttons.add(new FunctionButton("data/Preset6.png", Presets.class.getMethod("setMovingRuleBoxOverlay")));
-			buttons.add(new FunctionButton("data/Preset7.png", Presets.class.getMethod("setMovingRuleColoured")));
-			buttons.add(new FunctionButton("data/Preset8.png", Presets.class.getMethod("setColourizeUsageAbsolute")));
-			buttons.add(new FunctionButton("data/Preset9.png", Presets.class.getMethod("setMovingRuleColouredAbsolute")));
-			buttons.add(new FunctionButton("data/LoadFile.png", RevVisGDX.class.getMethod("loadNewFile")));
-		} catch (NoSuchMethodException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+			buttons.add(new FunctionButton("data/Preset0.png", new setDefault()));
+			buttons.add(new FunctionButton("data/Preset1.png", new setConstGarbage()));
+			buttons.add(new FunctionButton("data/Preset2.png", new setBoxesAndUsage()));
+			buttons.add(new FunctionButton("data/Preset3.png", new setColourizedUsage()));
+			buttons.add(new FunctionButton("data/Preset4.png", new setGreyNeighboursWithBlackTargets()));
+			buttons.add(new FunctionButton("data/Preset5.png", new setColourizeLineType()));
+			buttons.add(new FunctionButton("data/Preset6.png", new setMovingRuleBoxOverlay()));
+			buttons.add(new FunctionButton("data/Preset7.png", new setMovingRuleColoured()));
+			buttons.add(new FunctionButton("data/Preset8.png", new setColourizeUsageAbsolute()));
+			buttons.add(new FunctionButton("data/Preset9.png", new setMovingRuleColouredAbsolute()));
+//			buttons.add(new FunctionButton("data/LoadFile.png", RevVisGDX.class.getMethod("loadNewFile")));
+//		} catch (NoSuchMethodException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (SecurityException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	}
 	
 	/**
@@ -104,5 +104,74 @@ public class Menu implements Drawable {
 			b.draw();
 		}
 	}
-
+	
+	private class setDefault implements FunctionButton.ButtonCallBack{
+		@Override
+		public void method() {
+			Presets.setDefault();
+		}
+	}
+	
+	private class setConstGarbage implements FunctionButton.ButtonCallBack{
+		@Override
+		public void method() {
+			Presets.setConstGarbage();
+		}
+	}
+	
+	private class setBoxesAndUsage implements FunctionButton.ButtonCallBack{
+		@Override
+		public void method() {
+			Presets.setBoxesAndUsage();
+		}
+	}
+	
+	private class setColourizedUsage implements FunctionButton.ButtonCallBack{
+		@Override
+		public void method() {
+			Presets.setColourizedUsage();
+		}
+	}
+	
+	private class setGreyNeighboursWithBlackTargets implements FunctionButton.ButtonCallBack{
+		@Override
+		public void method() {
+			Presets.setGreyNeighboursWithBlackTargets();
+		}
+	}
+	
+	private class setColourizeLineType implements FunctionButton.ButtonCallBack{
+		@Override
+		public void method() {
+			Presets.setColourizeLineType();
+		}
+	}
+	
+	private class setMovingRuleBoxOverlay implements FunctionButton.ButtonCallBack{
+		@Override
+		public void method() {
+			Presets.setMovingRuleBoxOverlay();
+		}
+	}
+	
+	private class setMovingRuleColoured implements FunctionButton.ButtonCallBack{
+		@Override
+		public void method() {
+			Presets.setMovingRuleColoured();
+		}
+	}
+	
+	private class setColourizeUsageAbsolute implements FunctionButton.ButtonCallBack{
+		@Override
+		public void method() {
+			Presets.setColourizeUsageAbsolute();
+		}
+	}
+	
+	private class setMovingRuleColouredAbsolute implements FunctionButton.ButtonCallBack{
+		@Override
+		public void method() {
+			Presets.setMovingRuleColouredAbsolute();
+		}
+	}
 }

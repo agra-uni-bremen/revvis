@@ -48,16 +48,17 @@ public class RevlibFileReader {
 	public ReversibleCircuit readReal(String filename) {
 		BufferedReader br = null;
 		currentCircuit = new ReversibleCircuit();
-		try {
-			br = new BufferedReader(new FileReader(filename));
-		} catch (FileNotFoundException e) {
-			try {
-				br.close();
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
-			e.printStackTrace();
-		}
+//		try {
+			//br = new BufferedReader(new FileReader(filename));
+			System.out.println("File loading currently disabled");
+//		} catch (FileNotFoundException e) {
+//			try {
+//				br.close();
+//			} catch (IOException e1) {
+//				e1.printStackTrace();
+//			}
+//			e.printStackTrace();
+//		}
 		if (br != null) {
 			
 			String line;
