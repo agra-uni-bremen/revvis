@@ -39,6 +39,8 @@ public class RevVisGDX implements ApplicationListener {
 	float fullPresetScreenshotsScaling = 6f;
 
 	public Menu menu;
+	
+	public IFileLoaderCallback loader;
 
 	public RevVisGDX() {
 		super();
@@ -301,48 +303,11 @@ public class RevVisGDX implements ApplicationListener {
 	}
 
 	public static void loadNewFile() {
-		switch (Gdx.app.getType()) {
-		case Android:
-			break;
-		case Desktop:
-			break;
-		default:
-			break;
+		if (RevVisGDX.singleton.loader != null){
+			String contents = RevVisGDX.singleton.loader.loadFile();
+			if (!(contents.equals(""))) {
+				RevVisGDX.loadNewContents(contents);
+			}
 		}
-//		if (path == null) {
-//			path = new File(System.getProperty("user.dir"));
-//		}
-//
-//		final JFileChooser fc = new JFileChooser(path);
-//		fc.showOpenDialog(null);
-//		File sFile = fc.getSelectedFile();
-//
-//		if (sFile != null) {
-//			
-//			path = sFile;
-//			
-//			String filename = sFile.toString();
-//
-//			try {
-//				ReversibleCircuit c;
-//				if (filename != null && filename != "") {
-//					c = RevlibFileReader.readRealFile(filename);
-//					RevVisGDX.singleton.drawables
-//							.remove(RevVisGDX.singleton.currentCircuit);
-//					RevVisGDX.singleton.mc.clear();
-//					RevVisGDX.singleton.currentCircuit = new DrawableCircuitReordered(
-//							c);
-//					RevVisGDX.singleton.drawables
-//							.add(RevVisGDX.singleton.currentCircuit);
-//					RevVisGDX.singleton.currentCircuit.zoomExtents();
-//					RevVisGDX.singleton.mc.addMessage("Loaded " + filename);
-//				} else {
-//					System.out.println("Error: could not load " + filename);
-//				}
-//			} catch (Exception e) {
-//				System.out.println("Error: could not load " + filename);
-//			}
-//		}
-		System.out.println("File loading currently disabled.");
 	}
 }
