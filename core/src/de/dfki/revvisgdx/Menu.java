@@ -2,7 +2,9 @@ package de.dfki.revvisgdx;
 
 import java.util.Vector;
 
+import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Gdx;
+import com.sun.org.apache.xpath.internal.operations.And;
 
 import de.dfki.revvisgdx.buttons.FunctionButton;
 
@@ -18,25 +20,19 @@ public class Menu implements Drawable {
 	private int lines = 1;
 	
 	public Menu() {
-//		try {
-			buttons.add(new FunctionButton("data/Preset0.png", new setDefault()));
-			buttons.add(new FunctionButton("data/Preset1.png", new setConstGarbage()));
-			buttons.add(new FunctionButton("data/Preset2.png", new setBoxesAndUsage()));
-			buttons.add(new FunctionButton("data/Preset3.png", new setColourizedUsage()));
-			buttons.add(new FunctionButton("data/Preset4.png", new setGreyNeighboursWithBlackTargets()));
-			buttons.add(new FunctionButton("data/Preset5.png", new setColourizeLineType()));
-			buttons.add(new FunctionButton("data/Preset6.png", new setMovingRuleBoxOverlay()));
-			buttons.add(new FunctionButton("data/Preset7.png", new setMovingRuleColoured()));
-			buttons.add(new FunctionButton("data/Preset8.png", new setColourizeUsageAbsolute()));
-			buttons.add(new FunctionButton("data/Preset9.png", new setMovingRuleColouredAbsolute()));
-//			buttons.add(new FunctionButton("data/LoadFile.png", RevVisGDX.class.getMethod("loadNewFile")));
-//		} catch (NoSuchMethodException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (SecurityException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		buttons.add(new FunctionButton("data/Preset0.png", new setDefault()));
+		buttons.add(new FunctionButton("data/Preset1.png", new setConstGarbage()));
+		buttons.add(new FunctionButton("data/Preset2.png", new setBoxesAndUsage()));
+		buttons.add(new FunctionButton("data/Preset3.png", new setColourizedUsage()));
+		buttons.add(new FunctionButton("data/Preset4.png", new setGreyNeighboursWithBlackTargets()));
+		buttons.add(new FunctionButton("data/Preset5.png", new setColourizeLineType()));
+		buttons.add(new FunctionButton("data/Preset6.png", new setMovingRuleBoxOverlay()));
+		buttons.add(new FunctionButton("data/Preset7.png", new setMovingRuleColoured()));
+		buttons.add(new FunctionButton("data/Preset8.png", new setColourizeUsageAbsolute()));
+		buttons.add(new FunctionButton("data/Preset9.png", new setMovingRuleColouredAbsolute()));
+		if (!(Gdx.app.getType().equals(ApplicationType.WebGL)) && !(Gdx.app.getType().equals(ApplicationType.Applet))) {
+			buttons.add(new FunctionButton("data/LoadFile.png", new loadFile()));
+		}
 	}
 	
 	/**
@@ -172,6 +168,13 @@ public class Menu implements Drawable {
 		@Override
 		public void method() {
 			Presets.setMovingRuleColouredAbsolute();
+		}
+	}
+	
+	private class loadFile implements FunctionButton.ButtonCallBack{
+		@Override
+		public void method() {
+			RevVisGDX.singleton.loadNewFile();
 		}
 	}
 }

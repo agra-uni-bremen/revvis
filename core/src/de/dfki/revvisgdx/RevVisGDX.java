@@ -1,11 +1,11 @@
 package de.dfki.revvisgdx;
 
 import java.io.File;
-import java.nio.ByteBuffer;
+//import java.nio.ByteBuffer;
 import java.util.Date;
 import java.util.Vector;
 
-import javax.swing.JFileChooser;
+//import javax.swing.JFileChooser;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Files.FileType;
@@ -13,9 +13,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Pixmap;
-import com.badlogic.gdx.graphics.Pixmap.Format;
-import com.badlogic.gdx.graphics.PixmapIO;
+//import com.badlogic.gdx.graphics.Pixmap;
+//import com.badlogic.gdx.graphics.Pixmap.Format;
+//import com.badlogic.gdx.graphics.PixmapIO;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import de.dfki.revlibReader.ReversibleCircuit;
@@ -282,8 +282,33 @@ public class RevVisGDX implements ApplicationListener {
 //
 //		return pixmap;
 //	}
+	
+	public interface IFileLoaderCallback {
+		String loadFile();
+	}
+	
+	public static void loadNewContents(String contents) {
+		ReversibleCircuit c = RevlibFileReader.readRealFileContents(contents);
+		RevVisGDX.singleton.drawables
+				.remove(RevVisGDX.singleton.currentCircuit);
+		RevVisGDX.singleton.mc.clear();
+		RevVisGDX.singleton.currentCircuit = new DrawableCircuitReordered(
+				c);
+		RevVisGDX.singleton.drawables
+				.add(RevVisGDX.singleton.currentCircuit);
+		RevVisGDX.singleton.currentCircuit.zoomExtents();
+		RevVisGDX.singleton.mc.addMessage("Loaded " + contents.substring(0, Math.min(24, contents.length())));
+	}
 
 	public static void loadNewFile() {
+		switch (Gdx.app.getType()) {
+		case Android:
+			break;
+		case Desktop:
+			break;
+		default:
+			break;
+		}
 //		if (path == null) {
 //			path = new File(System.getProperty("user.dir"));
 //		}
