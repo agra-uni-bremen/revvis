@@ -2,6 +2,7 @@ package de.dfki.revvisgdx;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Rectangle;
 
@@ -10,16 +11,43 @@ public class RevVisInputProcessor implements InputProcessor {
 	boolean multiTouchZoom = false;
 	private int oldX, oldY, oldX2, oldY2, oldDistanceX, oldDistanceY;
 	
+	private boolean ctrl, shift, alt;
+	
 	@Override
 	public boolean keyDown (int keycode) {
+		if (keycode == Keys.CONTROL_LEFT || keycode == Keys.CONTROL_RIGHT) {
+			ctrl = true;
+		} else if (keycode == Keys.ALT_LEFT || keycode == Keys.ALT_RIGHT) {
+			alt = true;
+		} else if (keycode == Keys.SHIFT_LEFT || keycode == Keys.SHIFT_RIGHT) {
+			shift = true;
+		}
 		return false;
 	}
 
 	@Override
 	public boolean keyUp (int keycode) {
+		if (keycode == Keys.CONTROL_LEFT || keycode == Keys.CONTROL_RIGHT) {
+			ctrl = false;
+		} else if (keycode == Keys.ALT_LEFT || keycode == Keys.ALT_RIGHT) {
+			alt = false;
+		} else if (keycode == Keys.SHIFT_LEFT || keycode == Keys.SHIFT_RIGHT) {
+			shift = false;
+		} else if (keycode == Keys.O) {
+			if (ctrl) {
+				RevVisGDX.loadNewFile();
+			}
+		}
+		
 		return false;
 	}
 
+	/**
+	 * this method does not work well with modifier keys, therefore:
+	 * TODO: move all cases up into the keyDown / keyUp methods.
+	 * @param character
+	 * @return
+	 */
 	@Override
 	public boolean keyTyped (char character) {
 		DrawableCircuit dc; 
