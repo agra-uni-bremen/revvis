@@ -409,7 +409,7 @@ public class DrawableCircuit implements Drawable {
 	}
 	
 	protected float getLineYScreenCoord(String line) {
-		float y = (this.data.getVars().indexOf(line) - (data.getAmountOfVars() / 2)) - smoothOffsetY; //+ RevVisGDX.singleton.camera.viewportHeight;
+		float y = -(this.data.getVars().indexOf(line) - (data.getAmountOfVars() / 2)) + smoothOffsetY; //+ RevVisGDX.singleton.camera.viewportHeight;
 		y *= smoothScaleY;
 		return y;
 	}

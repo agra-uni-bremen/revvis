@@ -184,7 +184,7 @@ public class RevVisInputProcessor implements InputProcessor {
 	public boolean touchDragged (int x, int y, int pointer) {
 		if (isMoving) {
 			RevVisGDX.singleton.currentCircuit.offsetX += (x - oldX) / RevVisGDX.singleton.currentCircuit.getScaleX();
-			RevVisGDX.singleton.currentCircuit.offsetY += (y - oldY) / RevVisGDX.singleton.currentCircuit.getScaleY();
+			RevVisGDX.singleton.currentCircuit.offsetY -= (y - oldY) / RevVisGDX.singleton.currentCircuit.getScaleY();
 			oldX = x;
 			oldY = y;
 		} else if (multiTouchZoom) {
@@ -220,7 +220,7 @@ public class RevVisInputProcessor implements InputProcessor {
 	@Override
 	public boolean scrolled (int amount) {
 		float mouseAtWidth = (float)oldX / Gdx.graphics.getWidth();
-		float mouseAtHeight = (float)(Gdx.graphics.getHeight() - oldY) / Gdx.graphics.getHeight();
+		float mouseAtHeight = (float)oldY / Gdx.graphics.getHeight();
 		
 		Rectangle current = RevVisGDX.singleton.currentCircuit.getViewBounds();
 		
