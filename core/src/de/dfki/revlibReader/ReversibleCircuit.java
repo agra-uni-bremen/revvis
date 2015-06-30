@@ -103,6 +103,16 @@ public class ReversibleCircuit {
 	public int getAmountOfVars() {
 		return vars.size();
 	}
+	
+	/**
+	 * Calculates the index of a variable. Notice that this looks
+	 * up the variable inside a vector, so don't overuse this.
+	 * @param var the variable to look for
+	 * @return the variable's index
+	 */
+	public int getVarIndex(String var) {
+		return this.vars.indexOf(var);
+	}
 
 	/**
 	 * This circuit's gates.

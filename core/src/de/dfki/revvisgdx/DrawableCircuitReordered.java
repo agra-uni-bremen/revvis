@@ -36,8 +36,8 @@ public class DrawableCircuitReordered extends DrawableCircuit {
 	 * where they are actually used and be shifted "down" into empty areas
 	 * to reduce the height of the drawn circuit.
 	 */
-	boolean drawReordered = false;
-	boolean drawShifted = false;
+	private boolean drawReordered = false;
+	private boolean drawShifted = false;
 
 	/**
 	 * Basically just a wrapper for the DrawableCircuit super-constructor,
@@ -49,6 +49,28 @@ public class DrawableCircuitReordered extends DrawableCircuit {
 		
 		lineStart = new DrawableSprite("data/lineStart.png");
 		lineEnd = new DrawableSprite("data/lineEnd.png");
+	}
+	
+	public boolean getDrawReordered() {
+		return drawReordered;
+	}
+	
+	public void setDrawReordered(boolean value) {
+		if (drawReordered != value) {
+			drawReordered = value;
+			recalculateGateShift();
+		}
+	}
+	
+	public boolean getDrawShifted() {
+		return drawShifted;
+	}
+	
+	public void setDrawShifted(boolean value) {
+		if (drawShifted != value) {
+			drawShifted = value;
+			recalculateGateShift();
+		}
 	}
 	
 	@Override
@@ -204,14 +226,22 @@ public class DrawableCircuitReordered extends DrawableCircuit {
 			ToffoliGate current = this.data.getGate(i);
 			for (int j = 0; j < current.getInputs().size(); j++) {
 				String line = current.getInputs().get(j);
-				int coord = this.getShiftedLineCoords(line);
+				int coord;
+				if (drawReordered)
+					coord = this.getShiftedLineCoords(line);
+				else
+					coord = RevVisGDX.singleton.currentCircuit.data.getVarIndex(line);
 				if (coord < minCoord)
 					minCoord = coord;
 				if (coord > maxCoord)
 					maxCoord = coord;
 			}
 			String line = current.output;
-			int coord = this.getShiftedLineCoords(line);
+			int coord;
+			if (drawReordered)
+				coord = this.getShiftedLineCoords(line);
+			else
+				coord = RevVisGDX.singleton.currentCircuit.data.getVarIndex(line);
 			if (coord < minCoord)
 				minCoord = coord;
 			if (coord > maxCoord)

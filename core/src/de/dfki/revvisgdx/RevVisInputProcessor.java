@@ -119,14 +119,14 @@ public class RevVisInputProcessor implements InputProcessor {
 			dc = RevVisGDX.singleton.currentCircuit;
 			if (dc instanceof DrawableCircuitReordered) {
 				DrawableCircuitReordered dcr = (DrawableCircuitReordered)dc;
-				dcr.drawReordered = !dcr.drawReordered;
+				dcr.setDrawReordered(!dcr.getDrawReordered());
 			}
 			break;
 		case 'R':
 			dc = RevVisGDX.singleton.currentCircuit;
 			if (dc instanceof DrawableCircuitReordered) {
 				DrawableCircuitReordered dcr = (DrawableCircuitReordered)dc;
-				dcr.drawShifted = !dcr.drawShifted;
+				dcr.setDrawShifted(!dcr.getDrawShifted());
 			}
 			break;
 		case 'z':
