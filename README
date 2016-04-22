@@ -9,6 +9,9 @@ The recent interest in reversible computation led to plenty of (automatic) appro
 
 RevVis introduces such a graphical interface to the domain of reversible circuit design. RevVis collects relevant data of a given reversible cascade and presents it in a simple but intuitive fashion. By this, RevVis unveils information on characteristic structures and properties of reversible circuits that could be utilized for further optimization. 
 
+Build and run RevVis using the gradle script via
+	./gradlew desktop:run
+
 Contact
 Please contact us in case of questions and/or problems at
 
