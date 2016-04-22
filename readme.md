@@ -4,22 +4,12 @@
 
 ---------------------------------------
 
-Copyright (c) 2014 Robert Wille, Jannis Stoppe, Eleonora Schönborn, 
-Kamalika Datta, and Rolf Drechsler
+Robert Wille, Jannis Stoppe, Eleonora Schönborn, Kamalika Datta, and Rolf Drechsler
 University of Bremen, Germany
 http://www.informatik.uni-bremen.de/agra/eng/revvis.php
 
-The software is intellectual property of the University of Bremen, Germany. You 
-can freely redistritbute this software for non-comercial pruposes as long as 
-it includes a reference to its orign.
-
-Use at your own risk!
-In no event shall the University of Bremen or the authors be liable for any 
-damages whatsoever (including without limitation damages for loss of business 
-profits, business interruption, loss of business information, or any other 
-pecuniary loss) arising from the use of or inability to use the software, even 
-if the the University of Bremen has been advised of the possibility of such 
-damages.
+This software is licensed under the GPLv3 license. See the LICENSE file for
+details.
 
 If you have any questions feel free to contact us using
 revvis@informatik.uni-bremen.de
