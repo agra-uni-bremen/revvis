@@ -5,8 +5,8 @@
 ---------------------------------------
 
 Copyright (c) 2014 Robert Wille, Jannis Stoppe, Eleonora Schönborn, 
-Kamalika Datta, and Rolf Drechsler  
-University of Bremen, Germany  
+Kamalika Datta, and Rolf Drechsler
+University of Bremen, Germany
 http://www.informatik.uni-bremen.de/agra/eng/revvis.php
 
 The software is intellectual property of the University of Bremen, Germany. You 
@@ -49,8 +49,9 @@ tained from several synthesis approaches.
 ## Usage
 
 RevVis was written using java and the libgdx framework, i.e. you will need a
-working Java Runtime Environment to run RevVis. Then, simply executing the
-*.jar-file starts the program.
+working Java Runtime Environment to run RevVis. You can build and run RevVis
+using the gradle script via
+	./gradlew desktop:run
 
 You are prompted with a dialogue to open a circuit when starting the program.
 If you cancel the selection of a file, an example circuit will be loaded
