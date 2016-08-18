@@ -25,7 +25,7 @@ public class HtmlLauncher extends GwtApplication {
 		super.onModuleLoad();
 		com.google.gwt.user.client.Window.addResizeHandler(new ResizeHandler() {
 			public void onResize(ResizeEvent ev) {
-				Gdx.graphics.setDisplayMode(ev.getWidth() - paddingX, ev.getHeight() - paddingY, false);
+				Gdx.graphics.setWindowedMode(ev.getWidth() - paddingX, ev.getHeight() - paddingY);
 			}
 		});
 	}
@@ -70,4 +70,10 @@ public class HtmlLauncher extends GwtApplication {
 			alert('The File APIs are not fully supported in this browser.');
 		}
 	}-*/;
+
+	@Override
+	public ApplicationListener createApplicationListener() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
