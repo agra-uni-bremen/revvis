@@ -4,7 +4,6 @@ import java.util.Vector;
 
 import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Gdx;
-import com.sun.org.apache.xpath.internal.operations.And;
 
 import de.dfki.revvisgdx.buttons.FunctionButton;
 

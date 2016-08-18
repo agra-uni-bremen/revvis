@@ -4,6 +4,7 @@ import java.util.Vector;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 
@@ -147,7 +148,8 @@ public class DrawableCircuit implements Drawable {
 				
 				Color lineNameColor = new Color(line.color).mul(0.5f);
 				Vector3 lineCoord = new Vector3(left, line.y + 10, 1);
-				float fontWidth = RevVisGDX.singleton.mc.getFont().getBounds(subs.get(j).name).width;
+				GlyphLayout gl = new GlyphLayout(RevVisGDX.singleton.mc.getFont(), subs.get(j).name);
+				float fontWidth = gl.width;
 				if (fontWidth > right - left)
 					lineNameColor.a = 0;
 				else if (fontWidth > right - left - 50)
