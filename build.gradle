@@ -12,6 +12,7 @@ buildscript {
 allprojects {
     apply plugin: "eclipse"
     apply plugin: "idea"
+    apply plugin: "checkstyle"
 
     version = '1.0'
     ext {
@@ -27,6 +28,13 @@ allprojects {
         mavenCentral()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+    }
+
+    checkstyle {
+        toolVersion = "6.19"
+        ignoreFailures = false
+        showViolations = true
+        configFile = rootProject.file('config/checkstyle/checkstyle.xml')
     }
 }
 
