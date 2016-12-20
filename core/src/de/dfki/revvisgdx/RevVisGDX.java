@@ -21,6 +21,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import de.dfki.revlibReader.ReversibleCircuit;
 import de.dfki.revlibReader.RevlibFileReader;
 
+/**
+ * Core class that represents the visualization itself.
+ * @author jannis
+ *
+ */
 public class RevVisGDX implements ApplicationListener {
 	public OrthographicCamera camera;
 	public SpriteBatch batch;
